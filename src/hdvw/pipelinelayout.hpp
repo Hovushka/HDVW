@@ -29,7 +29,7 @@ namespace hd {
 
             PipelineLayout_t(PipelineLayoutCreateInfo ci);
 
-            vk::PipelineLayout& raw();
+            vk::PipelineLayout raw();
 
             ~PipelineLayout_t();
     };

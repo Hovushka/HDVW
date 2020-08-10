@@ -72,17 +72,17 @@ namespace hd {
 
             void waitIdle();
 
-            vk::PhysicalDevice& physical();
+            vk::PhysicalDevice physical();
 
-            vk::ResultValue<uint32_t> acquireNextImage(vk::SwapchainKHR& swapChain, vk::Semaphore& semaphore);
+            vk::ResultValue<uint32_t> acquireNextImage(vk::SwapchainKHR swapChain, vk::Semaphore semaphore);
 
-            vk::Device& raw();
+            vk::Device raw();
 
-            QueueFamilyIndices& indices();
+            QueueFamilyIndices indices();
 
             void updateSurfaceInfo();
 
-            SwapChainSupportDetails& swapChainSupport();
+            SwapChainSupportDetails swapChainSupport();
 
             ~Device_t();
     };

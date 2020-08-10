@@ -28,7 +28,7 @@ namespace hd {
 
             Surface_t(SurfaceCreateInfo ci);
 
-            vk::SurfaceKHR& raw();
+            vk::SurfaceKHR raw();
 
             ~Surface_t();
     };

@@ -30,7 +30,7 @@ namespace hd {
 
             Framebuffer_t(FramebufferCreateInfo ci);
 
-            vk::Framebuffer& raw();
+            vk::Framebuffer raw();
 
             ~Framebuffer_t();
     };

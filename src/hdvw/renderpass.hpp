@@ -10,15 +10,15 @@
 namespace hd {
     class RenderPass_t {
         public:
-            virtual vk::RenderPass& raw() = 0;
+            virtual vk::RenderPass raw() = 0;
 
     };
 
     typedef std::shared_ptr<RenderPass_t> RenderPass;
 
     struct SwapChainRenderPassCreateInfo {
-        Device device;
         SwapChain swapChain;
+        Device device;
         vk::ImageLayout colorFinalLayout = vk::ImageLayout::ePresentSrcKHR;
         vk::ImageLayout depthFinalLayout = vk::ImageLayout::eDepthStencilAttachmentOptimal;
     };
@@ -35,7 +35,7 @@ namespace hd {
 
             SwapChainRenderPass_t(SwapChainRenderPassCreateInfo ci);
 
-            vk::RenderPass& raw();
+            vk::RenderPass raw();
 
             ~SwapChainRenderPass_t();
     };

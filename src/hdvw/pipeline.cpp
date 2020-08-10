@@ -4,11 +4,14 @@ using namespace hd;
 DefaultPipeline_t::DefaultPipeline_t(DefaultPipelineCreateInfo ci) {
     _device = ci.device->raw();
 
+    auto bindingDescription = Vertex::getBindingDescription();
+    auto attributeDescriptions = Vertex::getAttributeDescriptions();
+
     vk::PipelineVertexInputStateCreateInfo vertexInputInfo = {};
-    vertexInputInfo.vertexBindingDescriptionCount = 0;
-    vertexInputInfo.pVertexBindingDescriptions = nullptr;
-    vertexInputInfo.vertexAttributeDescriptionCount = 0;
-    vertexInputInfo.pVertexAttributeDescriptions = nullptr;
+    vertexInputInfo.vertexBindingDescriptionCount = 1;
+    vertexInputInfo.pVertexBindingDescriptions = &bindingDescription;
+    vertexInputInfo.vertexAttributeDescriptionCount = attributeDescriptions.size();
+    vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
     vk::PipelineInputAssemblyStateCreateInfo inputAssembly = {};
     inputAssembly.topology = vk::PrimitiveTopology::eTriangleList;
@@ -36,7 +39,7 @@ DefaultPipeline_t::DefaultPipeline_t(DefaultPipelineCreateInfo ci) {
     rasterizer.depthClampEnable = VK_FALSE;
     rasterizer.rasterizerDiscardEnable = VK_FALSE;
     rasterizer.lineWidth = 1.0f;
-    rasterizer.cullMode = vk::CullModeFlagBits::eBack;
+    rasterizer.cullMode = ci.cullMode;
     rasterizer.frontFace = ci.frontFace;
     rasterizer.polygonMode = ci.polygonMode;
 
@@ -121,7 +124,7 @@ DefaultPipeline_t::DefaultPipeline_t(DefaultPipelineCreateInfo ci) {
     _pipeline = res.value;
 }
 
-vk::Pipeline& DefaultPipeline_t::raw() {
+vk::Pipeline DefaultPipeline_t::raw() {
     return _pipeline;
 }
 

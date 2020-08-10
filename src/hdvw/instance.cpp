@@ -82,7 +82,7 @@ Instance_t::Instance_t(InstanceCreateInfo ci) {
         debugMessenger = _instance.createDebugUtilsMessengerEXT(debugCreateInfo, nullptr);
 }
 
-vk::Instance& Instance_t::raw() {
+vk::Instance Instance_t::raw() {
     return _instance;
 }
 

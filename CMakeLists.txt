@@ -40,11 +40,18 @@ add_executable (neo
     src/hdvw/pipeline.cpp
     src/hdvw/semaphore.cpp
     src/hdvw/fence.cpp
+    src/hdvw/buffer.cpp
+    src/hdvw/image.cpp
+    src/hdvw/texture.cpp
+    src/hdvw/descriptorlayout.cpp
+    src/hdvw/descriptorpool.cpp
+    src/hdvw/descriptorset.cpp
     src/external/vk_mem_alloc.cpp
+    src/external/stb_image.cpp
 )
 
 if (UNIX AND NOT APPLE)
-    target_link_libraries (neo glfw -ldl)
+    target_link_libraries (neo glfw glm -ldl)
 else ()
-    target_link_libraries (neo glfw)
+    target_link_libraries (neo glfw glm)
 endif ()

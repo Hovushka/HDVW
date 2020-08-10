@@ -75,11 +75,15 @@ void Queue_t::waitIdle() {
 }
 
 void Queue_t::submit(vk::SubmitInfo si, Fence fence) {
-    _queue.submit(1, &si, fence->raw());
+    if (fence == nullptr)
+        _queue.submit(1, &si, nullptr);
+    else _queue.submit(1, &si, fence->raw());
 }
 
 void Queue_t::submit(std::vector<vk::SubmitInfo> si, Fence fence) {
-    _queue.submit(si.size(), si.data(), fence->raw());
+    if (fence == nullptr)
+        _queue.submit(si.size(), si.data(), nullptr);
+    else _queue.submit(si.size(), si.data(), fence->raw());
 }
 
 vk::Result Queue_t::present(vk::PresentInfoKHR& presentInfo) {
@@ -89,7 +93,7 @@ vk::Result Queue_t::present(vk::PresentInfoKHR& presentInfo) {
     return _queue.presentKHR(&presentInfo);
 }
 
-vk::Queue& Queue_t::raw() {
+vk::Queue Queue_t::raw() {
     return _queue;
 }
 

@@ -15,7 +15,7 @@ Framebuffer_t::Framebuffer_t(FramebufferCreateInfo ci) {
     _framebuffer = _device.createFramebuffer(framebufferInfo);
 }
 
-vk::Framebuffer& Framebuffer_t::raw() {
+vk::Framebuffer Framebuffer_t::raw() {
     return _framebuffer;
 }
 

@@ -19,7 +19,7 @@ void Fence_t::reset() {
     _device.resetFences(_fence);
 }
 
-vk::Fence& Fence_t::raw() {
+vk::Fence Fence_t::raw() {
     return _fence;
 }
 

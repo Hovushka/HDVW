@@ -16,7 +16,7 @@ Surface_t::Surface_t(SurfaceCreateInfo ci) {
     _surface = static_cast<vk::SurfaceKHR>(psurface);
 }
 
-vk::SurfaceKHR& Surface_t::raw() {
+vk::SurfaceKHR Surface_t::raw() {
     return _surface;
 }
 

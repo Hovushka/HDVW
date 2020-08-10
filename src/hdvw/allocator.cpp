@@ -65,6 +65,14 @@ ReturnBuffer Allocator_t::create(vk::BufferCreateInfo ici, VmaMemoryUsage flag) 
     return { static_cast<vk::Buffer>(buff), alloc };
 }
 
+void Allocator_t::map(VmaAllocation alloc, void* &data) {
+    vmaMapMemory(_allocator, alloc, &data);
+}
+
+void Allocator_t::unmap(VmaAllocation alloc) {
+    vmaUnmapMemory(_allocator, alloc);
+}
+
 void Allocator_t::destroy(vk::Image img, VmaAllocation alloc) {
     vmaDestroyImage(_allocator, static_cast<VkImage>(img), alloc);
 }

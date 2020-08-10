@@ -49,6 +49,6 @@ namespace hd {
 
             vk::Result present(vk::PresentInfoKHR& presentInfo);
 
-            vk::Queue& raw();
+            vk::Queue raw();
     };
 }

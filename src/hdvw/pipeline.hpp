@@ -5,6 +5,7 @@
 #include <hdvw/device.hpp>
 #include <hdvw/pipelinelayout.hpp>
 #include <hdvw/renderpass.hpp>
+#include <hdvw/vertex.hpp>
 
 #include <vector>
 #include <memory>
@@ -12,7 +13,7 @@
 namespace hd {
     class Pipeline_t {
         public:
-            virtual vk::Pipeline& raw() = 0;
+            virtual vk::Pipeline raw() = 0;
     };
 
     typedef std::shared_ptr<Pipeline_t> Pipeline;
@@ -23,6 +24,7 @@ namespace hd {
         Device device;
         std::vector<vk::PipelineShaderStageCreateInfo> shaderInfo;
         vk::Extent2D extent;
+        vk::CullModeFlags cullMode = vk::CullModeFlagBits::eBack;
         vk::FrontFace frontFace = vk::FrontFace::eClockwise;
         vk::PolygonMode polygonMode = vk::PolygonMode::eFill;
         bool checkDepth = true;
@@ -40,7 +42,7 @@ namespace hd {
 
             DefaultPipeline_t(DefaultPipelineCreateInfo ci);
 
-            vk::Pipeline& raw();
+            vk::Pipeline raw();
 
             ~DefaultPipeline_t();
     };

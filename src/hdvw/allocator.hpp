@@ -43,6 +43,10 @@ namespace hd {
 
             ReturnBuffer create(vk::BufferCreateInfo ici, VmaMemoryUsage flag);
 
+            void map(VmaAllocation alloc, void* &data);
+
+            void unmap(VmaAllocation alloc);
+
             void destroy(vk::Image img, VmaAllocation alloc);
 
             void destroy(vk::Buffer buff, VmaAllocation alloc);

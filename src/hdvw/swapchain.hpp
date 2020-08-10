@@ -13,8 +13,8 @@ namespace hd {
     struct SwapChainCreateInfo {
         Window window;
         Surface surface;
-        Device device;
         Allocator allocator;
+        Device device;
         vk::PresentModeKHR presentMode;
         std::optional<uint32_t> imageCount;
     };
@@ -47,9 +47,9 @@ namespace hd {
 
             SwapChain_t(SwapChainCreateInfo ci);
 
-            vk::Format& format();
+            vk::Format format();
 
-            vk::Format& depthFormat();
+            vk::Format depthFormat();
 
             uint32_t length();
 
@@ -59,7 +59,7 @@ namespace hd {
 
             Attachment depthAttachment(uint32_t index);
 
-            vk::SwapchainKHR& raw();
+            vk::SwapchainKHR raw();
 
             ~SwapChain_t();
     };

@@ -44,7 +44,7 @@ namespace hd {
 
             Instance_t(InstanceCreateInfo ci);
 
-            vk::Instance& raw();
+            vk::Instance raw();
 
             ~Instance_t();
     };

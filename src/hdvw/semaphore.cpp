@@ -9,7 +9,7 @@ Semaphore_t::Semaphore_t(SemaphoreCreateInfo ci) {
     _semaphore = _device.createSemaphore(sci, nullptr);
 }
 
-vk::Semaphore& Semaphore_t::raw() {
+vk::Semaphore Semaphore_t::raw() {
     return _semaphore;
 }
 

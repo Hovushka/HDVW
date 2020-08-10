@@ -6,6 +6,7 @@
 
 #include <hdvw/device.hpp>
 #include <hdvw/allocator.hpp>
+#include <hdvw/image.hpp>
 
 #include <memory>
 
@@ -25,12 +26,11 @@ namespace hd {
 
     class Attachment_t {
         private:
-            vk::Image _image;
-            vk::ImageView _view;
-            VmaAllocation _imageMemory;
+            Image _image;
+            vk::Image _imageHandle;
+            ImageView _view;
 
             vk::Device _device;
-            Allocator _allocator;
 
         public:
             static Attachment conjure(AttachmentCreateInfo ci) {
@@ -39,10 +39,8 @@ namespace hd {
 
             Attachment_t(AttachmentCreateInfo ci);
 
-            vk::Image& raw();
+            vk::Image raw();
 
-            vk::ImageView& view();
-
-            ~Attachment_t();
+            vk::ImageView view();
     };
 }

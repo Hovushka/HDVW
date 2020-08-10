@@ -26,7 +26,7 @@ namespace hd {
 
             Semaphore_t(SemaphoreCreateInfo ci);
 
-            vk::Semaphore& raw();
+            vk::Semaphore raw();
 
             ~Semaphore_t();
     };

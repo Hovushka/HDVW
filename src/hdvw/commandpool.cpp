@@ -55,14 +55,15 @@ CommandBuffer CommandPool_t::singleTimeBegin() {
 void CommandPool_t::singleTimeEnd(CommandBuffer buffer, Queue queue) {
     buffer->end();
 
+    auto raw = buffer->raw();
     vk::SubmitInfo si = {};
     si.commandBufferCount = 1;
-    si.pCommandBuffers = &buffer->raw();
+    si.pCommandBuffers = &raw;
     queue->submit(si, nullptr);
     queue->waitIdle();
 }
 
-vk::CommandPool& CommandPool_t::raw() {
+vk::CommandPool CommandPool_t::raw() {
     return _commandPool;
 }
 

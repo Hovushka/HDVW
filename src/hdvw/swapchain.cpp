@@ -124,11 +124,11 @@ SwapChain_t::SwapChain_t(SwapChainCreateInfo ci) {
     }
 }
 
-vk::Format& SwapChain_t::format() {
+vk::Format SwapChain_t::format() {
     return _format;
 }
 
-vk::Format& SwapChain_t::depthFormat() {
+vk::Format SwapChain_t::depthFormat() {
     return _depthFormat;
 }
 
@@ -148,7 +148,7 @@ Attachment SwapChain_t::depthAttachment(uint32_t index) {
     return _depthImages.at(index);
 }
 
-vk::SwapchainKHR& SwapChain_t::raw() {
+vk::SwapchainKHR SwapChain_t::raw() {
     return _swapChain;
 }
 

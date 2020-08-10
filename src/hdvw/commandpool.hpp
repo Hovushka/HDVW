@@ -43,7 +43,7 @@ namespace hd {
 
             void singleTimeEnd(CommandBuffer buffer, Queue queue);
 
-            vk::CommandPool& raw();
+            vk::CommandPool raw();
 
             ~CommandPool_t();
     };

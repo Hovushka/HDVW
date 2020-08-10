@@ -36,7 +36,7 @@ namespace hd {
 
             void reset();
 
-            vk::Fence& raw();
+            vk::Fence raw();
 
             ~Fence_t();
     };
